@@ -5,9 +5,10 @@ from datetime import date, timedelta
 file_path = './data.json'
 
 
-today = date.today()
+yesterday = date.today() - timedelta(days=1)
+# start_date = date(2022, 11, 25)
 start_date = date(2022, 11, 25)
-target_date = today
+target_date = date(2023, 6, 17)
 
 key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJYLUFwcC1SYXRlLUxpbWl0IjoiNTAwOjEwIiwiYWNjb3VudF9pZCI6IjczODYyMDg0MSIsImF1dGhfaWQiOiIyIiwiZXhwIjoxNjk2MjIwNDIyLCJpYXQiOjE2ODA2Njg0MjIsIm5iZiI6MTY4MDY2ODQyMiwic2VydmljZV9pZCI6IjQzMDAxMTM5NyIsInRva2VuX3R5cGUiOiJBY2Nlc3NUb2tlbiJ9.a1uzzGmjXdZztvwydTrjihQpyoYG9Saa10hTEBbKESs'
 
@@ -25,7 +26,7 @@ def iter():
     date = start_date
     ans = []
     
-    while date != target_date:
+    while date <= target_date:
         data = start(count, date, cursor)
         cube_log = data['cube_histories']
         cube_used.append(cube_log) if len(cube_log) != 0 else None
